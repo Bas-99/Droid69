@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Droid69</string>
+    <string name="welcome_text">Hello Sun</string>
+    <string name="Home_Screen">Home_Screen</string>
+    <string name="Start_Button">Start_Button</string>
+    <string name="input_text2">Things You Like To Do</string>
+    <string name="input_text3">e.g. Gaming, Drawing</string>
+    <string name="thingsEnjoy">Things You Enjoy \n Drawing, Coding etc.</string>
+</resources>

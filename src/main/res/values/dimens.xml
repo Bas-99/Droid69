@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">24sp</dimen>
+    <dimen name="Button_Width">50dp</dimen>
+    <dimen name="Butten_Height">100dp</dimen>
+    <dimen name="Button_Width2">300</dimen>
+
+    <dimen name="nameWidth">28</dimen>
+    <dimen name="nameHeight">220</dimen>
+</resources>
