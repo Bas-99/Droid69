@@ -24,6 +24,9 @@ public class Agenda2Activity extends AppCompatActivity {
     int packet_background = 3;
     int packet_font = 4;
 
+    int another_package =1;
+    int blabla = 1;
+
     ConstraintLayout background2;
 
     @Override
@@ -156,5 +159,4 @@ public class Agenda2Activity extends AppCompatActivity {
         }
         return false;
     }
-    //blablabla
 }
