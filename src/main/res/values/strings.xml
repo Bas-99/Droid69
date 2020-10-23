@@ -6,4 +6,7 @@
     <string name="input_text2">Things You Like To Do</string>
     <string name="input_text3">e.g. Gaming, Drawing</string>
     <string name="thingsEnjoy">Things You Enjoy \n Drawing, Coding etc.</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

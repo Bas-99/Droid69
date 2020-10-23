@@ -6,148 +6,184 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".AgendaActivity"
-        android:id="@+id/background">
-    <TextView
-            android:text="TUESDAY"
-            android:layout_width="275dp"
-            android:layout_height="60dp" android:id="@+id/tuesday"
-            android:textSize="30dp" android:textStyle="bold" app:layout_constraintStart_toStartOf="@+id/line1tuesday"
-            app:layout_constraintEnd_toEndOf="@+id/line1tuesday" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toBottomOf="@+id/line4monday" android:layout_marginTop="15dp"
-            android:gravity="center"/>
-    <TextView
-            android:text="MONDAY"
-            android:layout_width="275dp"
-            android:layout_height="60dp" android:id="@+id/monday"
-            android:textSize="30dp" android:textStyle="bold" app:layout_constraintStart_toStartOf="@+id/line1tuesday"
-            app:layout_constraintEnd_toEndOf="@+id/line1tuesday"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="55dp"
-            app:layout_constraintHorizontal_bias="0.5" android:gravity="center"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line1tuesday"
-            android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line2tuesday"
-            app:layout_constraintEnd_toEndOf="@+id/line2tuesday" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/tuesday" android:layout_marginTop="0dp"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line2tuesday"
-            android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line3tuesday"
-            app:layout_constraintEnd_toEndOf="@+id/line3tuesday"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/line1tuesday" android:layout_marginTop="0dp"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line3tuesday"
-            android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line4tuesday"
-            app:layout_constraintEnd_toEndOf="@+id/line4tuesday"
-            app:layout_constraintTop_toBottomOf="@+id/line2tuesday" android:layout_marginTop="0dp"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line4tuesday"
-            android:hint="Things to do"
-            app:layout_constraintTop_toBottomOf="@+id/line3tuesday"
-            app:layout_constraintStart_toStartOf="@+id/line1wednesday"
-            app:layout_constraintEnd_toEndOf="@+id/line1wednesday" android:layout_marginTop="0dp"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <TextView
-            android:text="WEDNESDAY"
-            android:layout_width="300dp"
-            android:layout_height="60dp" android:id="@+id/wednesday"
-            android:textSize="30dp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toBottomOf="@+id/line4tuesday" android:layout_marginTop="15dp"
-            android:gravity="center"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line1wednesday"
-            android:hint="Things to do"
-            app:layout_constraintTop_toBottomOf="@+id/wednesday" app:layout_constraintStart_toStartOf="@+id/wednesday"
-            app:layout_constraintEnd_toEndOf="@+id/wednesday" android:layout_marginTop="0dp"
-            app:layout_constraintHorizontal_bias="0.5"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line2wednesday"
-            android:hint="Things to do"
-            app:layout_constraintTop_toBottomOf="@+id/line1wednesday"
-            app:layout_constraintStart_toStartOf="@+id/line1wednesday"
-            app:layout_constraintEnd_toEndOf="@+id/line1wednesday" android:layout_marginTop="0dp"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line3wednesday"
-            android:hint="Things to do" app:layout_constraintEnd_toEndOf="@+id/line2wednesday"
-            app:layout_constraintStart_toStartOf="@+id/line2wednesday" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/line2wednesday" android:layout_marginTop="0dp"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line4wednesday"
-            android:hint="Things to do"
-            app:layout_constraintTop_toBottomOf="@+id/line3wednesday"
-            app:layout_constraintStart_toStartOf="@+id/line3wednesday"
-            app:layout_constraintEnd_toEndOf="@+id/line3wednesday" android:layout_marginTop="0dp"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line1monday"
-            android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line2monday"
-            app:layout_constraintEnd_toEndOf="@+id/line2monday" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/monday" android:fontFamily="sans-serif"
-            android:layout_marginTop="0dp"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line2monday"
-            android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line3monday"
-            app:layout_constraintEnd_toEndOf="@+id/line3monday" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/line1monday" android:fontFamily="sans-serif"
-            android:layout_marginTop="0dp"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line3monday"
-            android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line4monday"
-            app:layout_constraintEnd_toEndOf="@+id/line4monday" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/line2monday" android:layout_marginTop="0dp"/>
-    <EditText
-            android:layout_width="269dp"
-            android:layout_height="50dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/line4monday"
-            android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line1tuesday"
-            app:layout_constraintEnd_toEndOf="@+id/line1tuesday" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/line3monday" android:layout_marginTop="0dp"/>
+        android:id="@+id/drawer_layout"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+    <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:id="@+id/nav_view"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/drawer_menu"/>
+
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
+                                               android:layout_height="?attr/actionBarSize"
+                                               android:background="#D68CE3"
+                                               android:id="@+id/toolbar"
+                                               android:theme="?attr/actionBarTheme"
+                                               android:elevation="4dp"
+                                               app:layout_constraintStart_toStartOf="parent"
+                                               app:layout_constraintEnd_toEndOf="parent"
+                                               app:layout_constraintTop_toTopOf="parent"
+                                               app:navigationIcon="@drawable/ic_menu"/>
+            <TextView
+                    android:text="TUESDAY"
+                    android:layout_width="275dp"
+                    android:layout_height="60dp" android:id="@+id/tuesday"
+                    android:textSize="30dp" android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/line1tuesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line1tuesday" app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintTop_toBottomOf="@+id/line4monday" android:layout_marginTop="15dp"
+                    android:gravity="center"/>
+            <TextView
+                    android:text="MONDAY"
+                    android:layout_width="275dp"
+                    android:layout_height="60dp" android:id="@+id/monday"
+                    android:textSize="30dp" android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/line1tuesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line1tuesday"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="55dp"
+                    app:layout_constraintHorizontal_bias="0.5" android:gravity="center"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line1tuesday"
+                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line2tuesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line2tuesday" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/tuesday" android:layout_marginTop="0dp"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line2tuesday"
+                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line3tuesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line3tuesday"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/line1tuesday" android:layout_marginTop="0dp"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line3tuesday"
+                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line4tuesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line4tuesday"
+                    app:layout_constraintTop_toBottomOf="@+id/line2tuesday" android:layout_marginTop="0dp"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line4tuesday"
+                    android:hint="Things to do"
+                    app:layout_constraintTop_toBottomOf="@+id/line3tuesday"
+                    app:layout_constraintStart_toStartOf="@+id/line1wednesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line1wednesday" android:layout_marginTop="0dp"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+            <TextView
+                    android:text="WEDNESDAY"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp" android:id="@+id/wednesday"
+                    android:textSize="30dp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintTop_toBottomOf="@+id/line4tuesday" android:layout_marginTop="15dp"
+                    android:gravity="center"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line1wednesday"
+                    android:hint="Things to do"
+                    app:layout_constraintTop_toBottomOf="@+id/wednesday"
+                    app:layout_constraintStart_toStartOf="@+id/wednesday"
+                    app:layout_constraintEnd_toEndOf="@+id/wednesday" android:layout_marginTop="0dp"
+                    app:layout_constraintHorizontal_bias="0.5"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line2wednesday"
+                    android:hint="Things to do"
+                    app:layout_constraintTop_toBottomOf="@+id/line1wednesday"
+                    app:layout_constraintStart_toStartOf="@+id/line1wednesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line1wednesday" android:layout_marginTop="0dp"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line3wednesday"
+                    android:hint="Things to do" app:layout_constraintEnd_toEndOf="@+id/line2wednesday"
+                    app:layout_constraintStart_toStartOf="@+id/line2wednesday"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/line2wednesday" android:layout_marginTop="0dp"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line4wednesday"
+                    android:hint="Things to do"
+                    app:layout_constraintTop_toBottomOf="@+id/line3wednesday"
+                    app:layout_constraintStart_toStartOf="@+id/line3wednesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line3wednesday" android:layout_marginTop="0dp"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line1monday"
+                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line2monday"
+                    app:layout_constraintEnd_toEndOf="@+id/line2monday" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/monday" android:fontFamily="sans-serif"
+                    android:layout_marginTop="0dp"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line2monday"
+                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line3monday"
+                    app:layout_constraintEnd_toEndOf="@+id/line3monday" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/line1monday" android:fontFamily="sans-serif"
+                    android:layout_marginTop="0dp"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line3monday"
+                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line4monday"
+                    app:layout_constraintEnd_toEndOf="@+id/line4monday" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/line2monday" android:layout_marginTop="0dp"/>
+            <EditText
+                    android:layout_width="269dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/line4monday"
+                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line1tuesday"
+                    app:layout_constraintEnd_toEndOf="@+id/line1tuesday" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/line3monday" android:layout_marginTop="0dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

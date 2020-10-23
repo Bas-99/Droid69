@@ -7,19 +7,27 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Build;
 
+import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toolbar;
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
+import org.jetbrains.annotations.NotNull;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class AgendaActivity extends AppCompatActivity {
+public class AgendaActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TextView monday, tuesday, wednesday,
             line1monday, line2monday, line3monday, line4monday,
             line1tuesday, line2tuesday, line3tuesday, line4tuesday,
@@ -27,7 +35,11 @@ public class AgendaActivity extends AppCompatActivity {
             ToDo1, ToDo2, ToDo3, ToDo4, ToDo5, ToDo6, ToDo7, ToDo8, ToDo9, ToDo10, ToDo11,
             ToDo12;
 
-    DrawerLayout background;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    androidx.appcompat.widget.Toolbar toolbar;
+
+    ScrollView background;
 
     int packet_font = 4;     //the packet_font number will indicate which layout can be chosen by the user
     int packet_background = 3;
@@ -38,6 +50,16 @@ public class AgendaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         monday = (TextView) findViewById(R.id.monday);
         line1monday = (TextView) findViewById(R.id.line1monday);
@@ -57,7 +79,7 @@ public class AgendaActivity extends AppCompatActivity {
         line3wednesday = (TextView) findViewById(R.id.line3wednesday);
         line4wednesday = (TextView) findViewById(R.id.line4wednesday);
 
-        background = (DrawerLayout) findViewById(R.id.background);
+        background = (ScrollView) findViewById(R.id.background);
 
         TextView[] textViews = new TextView[15];
 
@@ -161,8 +183,17 @@ public class AgendaActivity extends AppCompatActivity {
             String ToDo = textViews[i+3].getText().toString();
             textViews[i+3].setText(ToDo);
         }
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
     }
-
+    @Override
+    public void onBackPressed () {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
     public boolean onTouchEvent(MotionEvent touchEvent) {
         switch (touchEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -180,5 +211,10 @@ public class AgendaActivity extends AppCompatActivity {
                 return false;
         }
         return false;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem menuItem) {
+        return true;
     }
 }
