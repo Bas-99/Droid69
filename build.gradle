@@ -31,6 +31,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.android.support:appcompat-v7'
+    implementation 'com.android.support:design'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'org.jetbrains:annotations-java5:19.0.0'
     testImplementation 'junit:junit:4.12'

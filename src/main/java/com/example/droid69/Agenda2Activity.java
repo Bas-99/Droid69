@@ -1,9 +1,12 @@
 package com.example.droid69;
 
+import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,11 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.List;
 
 public class Agenda2Activity extends AppCompatActivity {
 
@@ -22,13 +30,13 @@ public class Agenda2Activity extends AppCompatActivity {
     float x1,x2,y1,y2;
 
     int packet_background = 3;
-    int packet_font = 4;
+    int packet_font = 6;
 
-    int another_package =1;
-    int blabla = 1;
-    int lastGitTestVariable = 10;
+    DrawerLayout background2;
 
-    ConstraintLayout background2;
+
+    String[] ToDoList2 = new String[12];
+    TextView[] textViews = new TextView[16];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +62,7 @@ public class Agenda2Activity extends AppCompatActivity {
         line1sunday = (TextView) findViewById(R.id.line1sunday);
         line2sunday = (TextView) findViewById(R.id.line2sunday);
 
-        background2 = (ConstraintLayout) findViewById(R.id.background2);
-
-        TextView[] textViews = new TextView[16];
+        background2 = (DrawerLayout) findViewById(R.id.background2);
 
         textViews[0] = thursday;
         textViews[1] = friday;
@@ -139,8 +145,19 @@ public class Agenda2Activity extends AppCompatActivity {
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font6);
             }
+            for (int i = 2; i <4;i++){
+                textViews[i].setTextSize(35);
+            }
         }
+
+        for (int i = 0; i<ToDoList2.length; i++) {
+            ToDoList2[i] = textViews[i+4].getText().toString();
+            textViews[i+4].setText(ToDoList2[i]);
+        }
+
     }
+
+    final SharedPreferences sharedPreferences = getSharedPreferences("USER",MODE_PRIVATE);
 
     public boolean onTouchEvent(MotionEvent touchEvent) {
         switch (touchEvent.getAction()) {

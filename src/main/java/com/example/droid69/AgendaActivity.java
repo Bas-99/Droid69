@@ -15,6 +15,7 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -22,9 +23,11 @@ public class AgendaActivity extends AppCompatActivity {
     TextView monday, tuesday, wednesday,
             line1monday, line2monday, line3monday, line4monday,
             line1tuesday, line2tuesday, line3tuesday, line4tuesday,
-            line1wednesday, line2wednesday, line3wednesday, line4wednesday;
+            line1wednesday, line2wednesday, line3wednesday, line4wednesday,
+            ToDo1, ToDo2, ToDo3, ToDo4, ToDo5, ToDo6, ToDo7, ToDo8, ToDo9, ToDo10, ToDo11,
+            ToDo12;
 
-    ConstraintLayout background;
+    DrawerLayout background;
 
     int packet_font = 4;     //the packet_font number will indicate which layout can be chosen by the user
     int packet_background = 3;
@@ -54,7 +57,7 @@ public class AgendaActivity extends AppCompatActivity {
         line3wednesday = (TextView) findViewById(R.id.line3wednesday);
         line4wednesday = (TextView) findViewById(R.id.line4wednesday);
 
-        background = (ConstraintLayout) findViewById(R.id.background);
+        background = (DrawerLayout) findViewById(R.id.background);
 
         TextView[] textViews = new TextView[15];
 
@@ -138,6 +141,25 @@ public class AgendaActivity extends AppCompatActivity {
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font6);
             }
+        }
+
+        TextView[] ToDoList = new TextView[12];
+        ToDoList[0] = ToDo1;
+        ToDoList[1] = ToDo2;
+        ToDoList[2] = ToDo3;
+        ToDoList[3] = ToDo4;
+        ToDoList[4] = ToDo5;
+        ToDoList[5] = ToDo6;
+        ToDoList[6] = ToDo7;
+        ToDoList[7] = ToDo8;
+        ToDoList[8] = ToDo9;
+        ToDoList[9] = ToDo10;
+        ToDoList[10] = ToDo11;
+        ToDoList[11] = ToDo12;
+
+        for (int i = 0; i<ToDoList.length; i++) {
+            String ToDo = textViews[i+3].getText().toString();
+            textViews[i+3].setText(ToDo);
         }
     }
 
