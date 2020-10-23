@@ -26,6 +26,7 @@ public class Agenda2Activity extends AppCompatActivity {
 
     int another_package =1;
     int blabla = 1;
+    int lastGitTestVariable = 10;
 
     ConstraintLayout background2;
 
