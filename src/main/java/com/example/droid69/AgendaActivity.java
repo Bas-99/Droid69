@@ -7,10 +7,12 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Build;
 
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -57,7 +59,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
         setSupportActionBar(toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -179,21 +181,30 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         ToDoList[10] = ToDo11;
         ToDoList[11] = ToDo12;
 
-        for (int i = 0; i<ToDoList.length; i++) {
-            String ToDo = textViews[i+3].getText().toString();
-            textViews[i+3].setText(ToDo);
+        for (int i = 0; i < ToDoList.length; i++) {
+            String ToDo = textViews[i + 3].getText().toString();
+            textViews[i + 3].setText(ToDo);
         }
+
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_logout).setVisible(false);
+        menu.findItem(R.id.nav_profile).setVisible(false);
+
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setCheckedItem(R.id.nav_home);
     }
+
     @Override
-    public void onBackPressed () {
+    public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
     }
+
     public boolean onTouchEvent(MotionEvent touchEvent) {
         switch (touchEvent.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -214,7 +225,28 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem menuItem) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                break;
+            case R.id.nav_customize:
+                Intent intent = new Intent(AgendaActivity.this,CustomizeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_share:
+                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_achievements:
+                break;
+            case R.id.nav_tasks:
+                break;
+            case R.id.nav_profile:
+                break;
+
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }
