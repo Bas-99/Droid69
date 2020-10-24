@@ -43,7 +43,6 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
     ScrollView background;
 
-    int packet_font = 4;     //the packet_font number will indicate which layout can be chosen by the user
     int packet_background = 3;
 
     float x1, x2, y1, y2;
@@ -135,32 +134,32 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
             }
         }
 
-        if (packet_font == 1) {
+        if (CustomizeActivity.package_font == 1) {
             Typeface font1 = ResourcesCompat.getFont(this, R.font.font1);   //1
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font1);
             }
-        } else if (packet_font == 2) {
+        } else if (CustomizeActivity.package_font == 2) {
             Typeface font2 = ResourcesCompat.getFont(this, R.font.font2);   //2
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font2);
             }
-        } else if (packet_font == 3) {
+        } else if (CustomizeActivity.package_font == 3) {
             Typeface font3 = ResourcesCompat.getFont(this, R.font.font3);   //3
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font3);
             }
-        } else if (packet_font == 4) {
+        } else if (CustomizeActivity.package_font == 4) {
             Typeface font4 = ResourcesCompat.getFont(this, R.font.font4);   //4
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font4);
             }
-        } else if (packet_font == 5) {
+        } else if (CustomizeActivity.package_font == 5) {
             Typeface font5 = ResourcesCompat.getFont(this, R.font.font5);   //5
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font5);
             }
-        } else if (packet_font == 6) {
+        } else if (CustomizeActivity.package_font == 6) {
             Typeface font6 = ResourcesCompat.getFont(this, R.font.font6);   //6
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font6);
