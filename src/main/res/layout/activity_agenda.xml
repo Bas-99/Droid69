@@ -27,16 +27,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
-                                               android:layout_height="?attr/actionBarSize"
-                                               android:background="#D68CE3"
-                                               android:id="@+id/toolbar"
-                                               android:theme="?attr/actionBarTheme"
-                                               android:elevation="4dp"
-                                               app:layout_constraintStart_toStartOf="parent"
-                                               app:layout_constraintEnd_toEndOf="parent"
-                                               app:layout_constraintTop_toTopOf="parent"
-                                               app:navigationIcon="@drawable/ic_menu"/>
+            <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="#D68CE3"
+                    android:id="@+id/toolbar"
+                    android:theme="?attr/actionBarTheme"
+                    android:elevation="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:navigationIcon="@drawable/ic_menu"/>
             <TextView
                     android:text="TUESDAY"
                     android:layout_width="275dp"

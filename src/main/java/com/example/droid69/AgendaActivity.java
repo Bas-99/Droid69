@@ -43,8 +43,6 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
     ScrollView background;
 
-    int packet_background = 3;
-
     float x1, x2, y1, y2;
 
     @Override
@@ -108,7 +106,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
             textViews[i].setTextSize(40);
         }
 
-        if (packet_background == 1) {
+        if (CustomizeActivity.package_background == 1) {
             background.setBackgroundColor(Color.WHITE);
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTextColor(Color.DKGRAY);
@@ -116,7 +114,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
                 textViews[i].setHintTextColor(color);
                 ViewCompat.setBackgroundTintList(textViews[i], ColorStateList.valueOf(color));
             }
-        } else if (packet_background == 2) {
+        } else if (CustomizeActivity.package_background == 2) {
             background.setBackgroundColor(Color.BLACK);
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTextColor(Color.WHITE);
@@ -124,7 +122,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
                 textViews[i].setHintTextColor(color);
                 ViewCompat.setBackgroundTintList(textViews[i], ColorStateList.valueOf(color));
             }
-        } else if (packet_background == 3) {
+        } else if (CustomizeActivity.package_background == 3) {
             background.setBackgroundColor(Color.GRAY);
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTextColor(Color.WHITE);
