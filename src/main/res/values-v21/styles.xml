@@ -4,7 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFD68CE3</item>
         <item name="colorPrimaryDark">#A04CAF</item>
-        <item name="colorAccent">@color/Wheat</item>
+        <item name="colorAccent">@color/Coral</item>
         <item name="android:statusBarColor">#00000000</item>
     </style>
 </resources>

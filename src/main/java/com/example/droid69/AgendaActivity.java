@@ -1,5 +1,6 @@
 package com.example.droid69;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -27,20 +29,20 @@ import org.jetbrains.annotations.NotNull;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class AgendaActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    TextView monday, tuesday, wednesday,
-            line1monday, line2monday, line3monday, line4monday,
-            line1tuesday, line2tuesday, line3tuesday, line4tuesday,
-            line1wednesday, line2wednesday, line3wednesday, line4wednesday,
-            ToDo1, ToDo2, ToDo3, ToDo4, ToDo5, ToDo6, ToDo7, ToDo8, ToDo9, ToDo10, ToDo11,
-            ToDo12;
+
+    CheckBox[] checkBoxes = new CheckBox[6];
+    TextView[] textViews = new TextView[5];
+
+    TextView textView, textViewProgress, tasksTotal, tasksWeek, tasksToday, textViewCustomize;
+
+    ImageButton todo, achievementsButton, customizeButton;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
+    RelativeLayout relativeLayout;
 
     ScrollView background;
-
-    float x1, x2, y1, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,127 +59,97 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        monday = (TextView) findViewById(R.id.monday);
-        line1monday = (TextView) findViewById(R.id.line1monday);
-        line2monday = (TextView) findViewById(R.id.line2monday);
-        line3monday = (TextView) findViewById(R.id.line3monday);
-        line4monday = (TextView) findViewById(R.id.line4monday);
+        checkBoxes[0] = (CheckBox) findViewById(R.id.checkBox1);
+        checkBoxes[1] = (CheckBox) findViewById(R.id.checkBox2);
+        checkBoxes[2] = (CheckBox) findViewById(R.id.checkBox3);
+        checkBoxes[3] = (CheckBox) findViewById(R.id.checkBox4);
+        checkBoxes[4] = (CheckBox) findViewById(R.id.checkBox5);
+        checkBoxes[5] = (CheckBox) findViewById(R.id.checkBox6);
 
-        tuesday = (TextView) findViewById(R.id.tuesday);
-        line1tuesday = (TextView) findViewById(R.id.line1tuesday);
-        line2tuesday = (TextView) findViewById(R.id.line2tuesday);
-        line3tuesday = (TextView) findViewById(R.id.line3tuesday);
-        line4tuesday = (TextView) findViewById(R.id.line4tuesday);
+        textView = (TextView) findViewById(R.id.todoText);
+        textViewProgress = (TextView) findViewById(R.id.textViewProgress);
+        tasksTotal = (TextView) findViewById(R.id.tasksTotal);
+        tasksWeek = (TextView) findViewById(R.id.tasksWeek);
+        tasksToday = (TextView) findViewById(R.id.tasksToday);
+        textViewCustomize = (TextView) findViewById(R.id.textViewCustomize);
 
-        wednesday = (TextView) findViewById(R.id.wednesday);
-        line1wednesday = (TextView) findViewById(R.id.line1wednesday);
-        line2wednesday = (TextView) findViewById(R.id.line2wednesday);
-        line3wednesday = (TextView) findViewById(R.id.line3wednesday);
-        line4wednesday = (TextView) findViewById(R.id.line4wednesday);
+        textViews[0] = textView;
+        textViews[1] = textViewProgress;
+        textViews[2] = tasksTotal;
+        textViews[3] = tasksWeek;
+        textViews[4] = tasksToday;
+
+
+        todo = (ImageButton) findViewById(R.id.toDoButton);
+        achievementsButton = (ImageButton) findViewById(R.id.achievementsButton);
+        customizeButton = (ImageButton) findViewById(R.id.customizeButton);
 
         background = (ScrollView) findViewById(R.id.background);
 
-        TextView[] textViews = new TextView[15];
-
-        textViews[0] = monday;
-        textViews[1] = tuesday;
-        textViews[2] = wednesday;
-        textViews[3] = line1monday;
-        textViews[4] = line2monday;
-        textViews[5] = line3monday;
-        textViews[6] = line4monday;
-        textViews[7] = line1tuesday;
-        textViews[8] = line2tuesday;
-        textViews[9] = line3tuesday;
-        textViews[10] = line4tuesday;
-        textViews[11] = line1wednesday;
-        textViews[12] = line2wednesday;
-        textViews[13] = line3wednesday;
-        textViews[14] = line4wednesday;
-
-        for (int i = 0; i < textViews.length; i++) {
-            textViews[i].setTextSize(20);
-        }
-
-        for (int i = 0; i < 3; i++) {
-            textViews[i].setTextSize(40);
-        }
+        customizeButton.setBackgroundResource(R.drawable.todo_card);
+        Typeface font = ResourcesCompat.getFont(this, R.font.font1);   //1
+        textViewCustomize.setTypeface(font);
 
         if (CustomizeActivity.package_background == 1) {
             background.setBackgroundResource(R.drawable.theme1_small);
-            for (int i = 0; i < textViews.length; i++) {
-                textViews[i].setTextColor(Color.DKGRAY);
-                int color = getResources().getColor(R.color.LightGrey);
-                textViews[i].setHintTextColor(color);
-                ViewCompat.setBackgroundTintList(textViews[i], ColorStateList.valueOf(color));
-            }
+            todo.setBackgroundResource(R.drawable.todo_card);
+            achievementsButton.setBackgroundResource(R.drawable.todo_card);
         } else if (CustomizeActivity.package_background == 2) {
             background.setBackgroundColor(Color.BLACK);
-            for (int i = 0; i < textViews.length; i++) {
-                textViews[i].setTextColor(Color.WHITE);
-                int color = getResources().getColor(R.color.LightGrey);
-                textViews[i].setHintTextColor(color);
-                ViewCompat.setBackgroundTintList(textViews[i], ColorStateList.valueOf(color));
-            }
+
         } else if (CustomizeActivity.package_background == 3) {
             background.setBackgroundColor(Color.GRAY);
-            for (int i = 0; i < textViews.length; i++) {
-                textViews[i].setTextColor(Color.WHITE);
-                int color = getResources().getColor(R.color.LightGrey);
-                textViews[i].setHintTextColor(color);
-                ViewCompat.setBackgroundTintList(textViews[i], ColorStateList.valueOf(color));
-            }
+
         }
 
         if (CustomizeActivity.package_font == 1) {
             Typeface font1 = ResourcesCompat.getFont(this, R.font.font1);   //1
-            for (int i = 0; i < textViews.length; i++) {
+            for (int i=0;i<checkBoxes.length;i++){
+                checkBoxes[i].setTypeface(font1);
+            }
+            for (int i =0;i<textViews.length;i++){
                 textViews[i].setTypeface(font1);
             }
         } else if (CustomizeActivity.package_font == 2) {
             Typeface font2 = ResourcesCompat.getFont(this, R.font.font2);   //2
-            for (int i = 0; i < textViews.length; i++) {
+            for (int i=0;i<checkBoxes.length;i++){
+                checkBoxes[i].setTypeface(font2);
+            }
+            for (int i =0;i<textViews.length;i++){
                 textViews[i].setTypeface(font2);
             }
         } else if (CustomizeActivity.package_font == 3) {
             Typeface font3 = ResourcesCompat.getFont(this, R.font.font3);   //3
-            for (int i = 0; i < textViews.length; i++) {
+            for (int i=0;i<checkBoxes.length;i++){
+                checkBoxes[i].setTypeface(font3);
+            }
+            for (int i =0;i<textViews.length;i++){
                 textViews[i].setTypeface(font3);
             }
         } else if (CustomizeActivity.package_font == 4) {
             Typeface font4 = ResourcesCompat.getFont(this, R.font.font4);   //4
-            for (int i = 0; i < textViews.length; i++) {
+            for (int i=0;i<checkBoxes.length;i++){
+                checkBoxes[i].setTypeface(font4);
+            }
+            for (int i =0;i<textViews.length;i++){
                 textViews[i].setTypeface(font4);
             }
         } else if (CustomizeActivity.package_font == 5) {
             Typeface font5 = ResourcesCompat.getFont(this, R.font.font5);   //5
-            for (int i = 0; i < textViews.length; i++) {
+            for (int i=0;i<checkBoxes.length;i++){
+                checkBoxes[i].setTypeface(font5);
+            }
+            for (int i =0;i<textViews.length;i++){
                 textViews[i].setTypeface(font5);
             }
         } else if (CustomizeActivity.package_font == 6) {
             Typeface font6 = ResourcesCompat.getFont(this, R.font.font6);   //6
-            for (int i = 0; i < textViews.length; i++) {
+            for (int i=0;i<checkBoxes.length;i++){
+                checkBoxes[i].setTypeface(font6);
+            }
+            for (int i =0;i<textViews.length;i++){
                 textViews[i].setTypeface(font6);
             }
-        }
-
-        TextView[] ToDoList = new TextView[12];
-        ToDoList[0] = ToDo1;
-        ToDoList[1] = ToDo2;
-        ToDoList[2] = ToDo3;
-        ToDoList[3] = ToDo4;
-        ToDoList[4] = ToDo5;
-        ToDoList[5] = ToDo6;
-        ToDoList[6] = ToDo7;
-        ToDoList[7] = ToDo8;
-        ToDoList[8] = ToDo9;
-        ToDoList[9] = ToDo10;
-        ToDoList[10] = ToDo11;
-        ToDoList[11] = ToDo12;
-
-        for (int i = 0; i < ToDoList.length; i++) {
-            String ToDo = textViews[i + 3].getText().toString();
-            textViews[i + 3].setText(ToDo);
         }
 
         Menu menu = navigationView.getMenu();
@@ -188,7 +160,32 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
+
+        todo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AgendaActivity.this,ToDoActivity.class);
+                startActivity(i);
+            }
+        });
+
+        achievementsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AgendaActivity.this,AchievementsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        customizeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AgendaActivity.this,CustomizeActivity.class);
+                startActivity(i);
+            }
+        });
     }
+
 
     @Override
     public void onBackPressed() {
@@ -205,15 +202,19 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_home:
                 break;
             case R.id.nav_customize:
-                Intent intent = new Intent(AgendaActivity.this,CustomizeActivity.class);
-                startActivity(intent);
+                Intent i3 = new Intent(AgendaActivity.this,CustomizeActivity.class);
+                startActivity(i3);
                 break;
             case R.id.nav_share:
                 Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_achievements:
+                Intent i1 = new Intent(AgendaActivity.this,AchievementsActivity.class);
+                startActivity(i1);
                 break;
             case R.id.nav_tasks:
+                Intent i2 = new Intent(AgendaActivity.this,ToDoActivity.class);
+                startActivity(i2);
                 break;
             case R.id.nav_profile:
                 break;

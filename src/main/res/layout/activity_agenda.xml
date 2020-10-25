@@ -7,8 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".AgendaActivity"
         android:id="@+id/drawer_layout"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:fitsSystemWindows="true">
 
     <com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"
@@ -22,11 +21,10 @@
     <ScrollView android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/background">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
+                android:layout_height="wrap_content"
+                android:id="@+id/relativeLayout_main">
             <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
@@ -38,153 +36,186 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:navigationIcon="@drawable/ic_menu"/>
+            <ImageButton
+                    android:id="@+id/toDoButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:gravity="start"
+                    android:textStyle="bold"
+                    android:layout_below="@id/toolbar"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"/>
             <TextView
-                    android:text="TUESDAY"
-                    android:layout_width="275dp"
-                    android:layout_height="60dp" android:id="@+id/tuesday"
-                    android:textSize="30dp" android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/line1tuesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line1tuesday" app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintTop_toBottomOf="@+id/line4monday" android:layout_marginTop="15dp"
-                    android:gravity="center"/>
-            <TextView
-                    android:text="MONDAY"
-                    android:layout_width="275dp"
-                    android:layout_height="60dp" android:id="@+id/monday"
-                    android:textSize="30dp" android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/line1tuesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line1tuesday"
-                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="55dp"
-                    app:layout_constraintHorizontal_bias="0.5" android:gravity="center"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line1tuesday"
-                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line2tuesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line2tuesday" app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@+id/tuesday" android:layout_marginTop="0dp"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line2tuesday"
-                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line3tuesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line3tuesday"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@+id/line1tuesday" android:layout_marginTop="0dp"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line3tuesday"
-                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line4tuesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line4tuesday"
-                    app:layout_constraintTop_toBottomOf="@+id/line2tuesday" android:layout_marginTop="0dp"
-                    app:layout_constraintHorizontal_bias="0.0"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line4tuesday"
-                    android:hint="Things to do"
-                    app:layout_constraintTop_toBottomOf="@+id/line3tuesday"
-                    app:layout_constraintStart_toStartOf="@+id/line1wednesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line1wednesday" android:layout_marginTop="0dp"
-                    app:layout_constraintHorizontal_bias="0.0"/>
-            <TextView
-                    android:text="WEDNESDAY"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp" android:id="@+id/wednesday"
-                    android:textSize="30dp" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintTop_toBottomOf="@+id/line4tuesday" android:layout_marginTop="15dp"
-                    android:gravity="center"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line1wednesday"
-                    android:hint="Things to do"
-                    app:layout_constraintTop_toBottomOf="@+id/wednesday"
-                    app:layout_constraintStart_toStartOf="@+id/wednesday"
-                    app:layout_constraintEnd_toEndOf="@+id/wednesday" android:layout_marginTop="0dp"
-                    app:layout_constraintHorizontal_bias="0.5"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line2wednesday"
-                    android:hint="Things to do"
-                    app:layout_constraintTop_toBottomOf="@+id/line1wednesday"
-                    app:layout_constraintStart_toStartOf="@+id/line1wednesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line1wednesday" android:layout_marginTop="0dp"
-                    app:layout_constraintHorizontal_bias="0.0"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line3wednesday"
-                    android:hint="Things to do" app:layout_constraintEnd_toEndOf="@+id/line2wednesday"
-                    app:layout_constraintStart_toStartOf="@+id/line2wednesday"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@+id/line2wednesday" android:layout_marginTop="0dp"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line4wednesday"
-                    android:hint="Things to do"
-                    app:layout_constraintTop_toBottomOf="@+id/line3wednesday"
-                    app:layout_constraintStart_toStartOf="@+id/line3wednesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line3wednesday" android:layout_marginTop="0dp"
-                    app:layout_constraintHorizontal_bias="0.0"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line1monday"
-                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line2monday"
-                    app:layout_constraintEnd_toEndOf="@+id/line2monday" app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@+id/monday" android:fontFamily="sans-serif"
-                    android:layout_marginTop="0dp"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line2monday"
-                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line3monday"
-                    app:layout_constraintEnd_toEndOf="@+id/line3monday" app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@+id/line1monday" android:fontFamily="sans-serif"
-                    android:layout_marginTop="0dp"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line3monday"
-                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line4monday"
-                    app:layout_constraintEnd_toEndOf="@+id/line4monday" app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@+id/line2monday" android:layout_marginTop="0dp"/>
-            <EditText
-                    android:layout_width="269dp"
-                    android:layout_height="50dp"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/line4monday"
-                    android:hint="Things to do" app:layout_constraintStart_toStartOf="@+id/line1tuesday"
-                    app:layout_constraintEnd_toEndOf="@+id/line1tuesday" app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@+id/line3monday" android:layout_marginTop="0dp"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:id="@+id/todoText"
+                    android:text="To Do:"
+                    android:textSize="30dp"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:layout_alignRight="@id/toDoButton"
+                    android:layout_alignTop="@id/toDoButton"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="20dp"
+                    android:text="Test"
+                    android:textColor="@color/Black"
+                    android:layout_below="@id/todoText"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/checkBox1"/>
+            <CheckBox
+                    android:text="Test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textSize="20dp"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@id/checkBox1"
+                    android:textColor="@color/Black"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/checkBox2"/>
+            <CheckBox
+                    android:text="Test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textSize="20dp"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/Black"
+                    android:layout_below="@id/checkBox2"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/checkBox3"/>
+            <CheckBox
+                    android:text="Test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textSize="20dp"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/Black"
+                    android:layout_below="@id/checkBox3"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/checkBox4"/>
+            <CheckBox
+                    android:text="Test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textSize="20dp"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/Black"
+                    android:layout_below="@id/checkBox4"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/checkBox5"/>
+            <CheckBox
+                    android:text="Test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:textColor="@color/Black"
+                    android:textSize="20dp"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@id/checkBox5"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/checkBox6"/>
+            <ImageButton
+                    android:id="@+id/achievementsButton"
+                    android:layout_below="@id/toDoButton"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/relativeLayoutAchievements"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/achievementsButton"
+                    android:layout_alignBottom="@id/achievementsButton"
+                    android:layout_alignLeft="@id/achievementsButton"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+                <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:indeterminateOnly="false"
+                        android:progressDrawable="@drawable/circular_progress_bar"
+                        app:layout_constraintTop_toTopOf="@id/relativeLayoutAchievements"
+                        app:layout_constraintBottom_toBottomOf="@id/relativeLayoutAchievements"
+                        app:layout_constraintLeft_toLeftOf="@id/relativeLayoutAchievements"
+                        android:progress="60"/>
+                <TextView
+                        android:id="@+id/textViewProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="60%"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintTop_toTopOf="@id/progressBar"
+                        app:layout_constraintBottom_toBottomOf="@id/progressBar"
+                        app:layout_constraintLeft_toLeftOf="@id/progressBar"
+                        app:layout_constraintRight_toRightOf="@id/progressBar"/>
+                <TextView
+                        android:id="@+id/tasksTotal"
+                        android:text="Total completed tasks: 3439"
+                        app:layout_constraintLeft_toRightOf="@id/progressBar"
+                        android:textSize="20dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toTopOf="@id/progressBar"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tasksWeek"
+                        android:text="Tasks completed this week: 39"
+                        app:layout_constraintLeft_toRightOf="@id/progressBar"
+                        android:textSize="17dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/tasksTotal"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/tasksToday"
+                        android:text="Tasks completed today: 4"
+                        app:layout_constraintLeft_toRightOf="@id/progressBar"
+                        android:textSize="17dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/tasksWeek"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                    android:id="@+id/customizeButton"
+                    android:layout_below="@id/relativeLayoutAchievements"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/constraintLayoutCustomize"
+                    android:layout_alignTop="@id/customizeButton"
+                    android:layout_alignBottom="@id/customizeButton"
+                    android:layout_alignLeft="@id/customizeButton">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewCustomize"
+                        android:text="Customize Your App"
+                        android:gravity="center"
+                        android:textSize="40dp"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="@id/constraintLayoutCustomize"
+                        app:layout_constraintRight_toRightOf="@id/constraintLayoutCustomize"
+                        app:layout_constraintTop_toTopOf="@id/constraintLayoutCustomize"
+                        app:layout_constraintBottom_toBottomOf="@id/constraintLayoutCustomize"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

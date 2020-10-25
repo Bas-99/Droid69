@@ -12,6 +12,10 @@
             android:roundIcon="@mipmap/ic_app_logo_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".AchievementsActivity">
+        </activity>
+        <activity android:name=".ToDoActivity">
+        </activity>
         <activity android:name=".CustomizeActivity">
         </activity>
         <activity android:name=".testActivity">

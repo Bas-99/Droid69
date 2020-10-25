@@ -199,8 +199,12 @@ public class CustomizeActivity extends AppCompatActivity implements NavigationVi
                 Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_achievements:
+                Intent intent2 = new Intent(CustomizeActivity.this,AchievementsActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.nav_tasks:
+                Intent intent3 = new Intent(CustomizeActivity.this,ToDoActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.nav_profile:
                 break;
