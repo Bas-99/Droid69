@@ -2,6 +2,7 @@ package com.example.droid69;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.view.Menu;
@@ -27,6 +28,7 @@ public class CustomizeActivity extends AppCompatActivity implements NavigationVi
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
+    ImageView theme1preview;
 
     RadioGroup radioGroup, radioGroupBackground;
     RadioButton radioButton, radioButtonBackground;
@@ -40,6 +42,8 @@ public class CustomizeActivity extends AppCompatActivity implements NavigationVi
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+
+        theme1preview = findViewById(R.id.theme1preview);
 
         setSupportActionBar(toolbar);
 
@@ -59,6 +63,37 @@ public class CustomizeActivity extends AppCompatActivity implements NavigationVi
 
         textView2 = findViewById(R.id.selected_background);
         radioGroupBackground = findViewById(R.id.radioGroupBackground);
+
+        if (CustomizeActivity.package_font == 1) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_one);
+            b.setChecked(true);
+        } else if (CustomizeActivity.package_font == 2) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_two);
+            b.setChecked(true);
+        }else if (CustomizeActivity.package_font == 3) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_three);
+            b.setChecked(true);
+        }else if (CustomizeActivity.package_font == 4) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_four);
+            b.setChecked(true);
+        }else if (CustomizeActivity.package_font == 5) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_five);
+            b.setChecked(true);
+        }else if (CustomizeActivity.package_font == 6) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_six);
+            b.setChecked(true);
+        }
+
+        if (CustomizeActivity.package_background == 1) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_b_one);
+            b.setChecked(true);
+        }else if (CustomizeActivity.package_background == 2) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_b_two);
+            b.setChecked(true);
+        }else if (CustomizeActivity.package_background == 3) {
+            RadioButton b = (RadioButton)findViewById(R.id.radio_b_three);
+            b.setChecked(true);
+        }
 
         Button buttonApply = findViewById(R.id.button_apply);
         buttonApply.setOnClickListener(new View.OnClickListener() {

@@ -10,10 +10,7 @@ import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -107,7 +104,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         }
 
         if (CustomizeActivity.package_background == 1) {
-            background.setBackgroundColor(Color.WHITE);
+            background.setBackgroundResource(R.drawable.theme1_small);
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTextColor(Color.DKGRAY);
                 int color = getResources().getColor(R.color.LightGrey);
@@ -200,25 +197,6 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         } else {
             super.onBackPressed();
         }
-    }
-
-    public boolean onTouchEvent(MotionEvent touchEvent) {
-        switch (touchEvent.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                x1 = touchEvent.getX();
-                y1 = touchEvent.getY();
-                break;
-            case MotionEvent.ACTION_UP:
-                x2 = touchEvent.getX();
-                y2 = touchEvent.getY();
-                if (x1 > x2) {
-                    Intent i = new Intent(AgendaActivity.this, Agenda2Activity.class);
-                    startActivity(i);
-                    break;
-                }
-                return false;
-        }
-        return false;
     }
 
     @Override
