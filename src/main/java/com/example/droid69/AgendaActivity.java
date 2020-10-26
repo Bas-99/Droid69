@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Build;
 
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -26,6 +27,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class AgendaActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +48,9 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
     RelativeLayout relativeLayout;
 
     ScrollView background;
+
+    final Handler handler_interact = new Handler();//not defined as final variable. may cause        problem
+    View layout_interact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +95,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         background = (ScrollView) findViewById(R.id.background);
 
         customizeButton.setBackgroundResource(R.drawable.todo_card);
-        Typeface font = ResourcesCompat.getFont(this, R.font.font1);   //1
+        Typeface font = ResourcesCompat.getFont(AgendaActivity.this, R.font.font1);   //1
         textViewCustomize.setTypeface(font);
 
         if (CustomizeActivity.package_background == 1) {
@@ -104,50 +112,50 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
         if (CustomizeActivity.package_font == 1) {
             Typeface font1 = ResourcesCompat.getFont(this, R.font.font1);   //1
-            for (int i=0;i<checkBoxes.length;i++){
+            for (int i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].setTypeface(font1);
             }
-            for (int i =0;i<textViews.length;i++){
+            for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font1);
             }
         } else if (CustomizeActivity.package_font == 2) {
             Typeface font2 = ResourcesCompat.getFont(this, R.font.font2);   //2
-            for (int i=0;i<checkBoxes.length;i++){
+            for (int i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].setTypeface(font2);
             }
-            for (int i =0;i<textViews.length;i++){
+            for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font2);
             }
         } else if (CustomizeActivity.package_font == 3) {
             Typeface font3 = ResourcesCompat.getFont(this, R.font.font3);   //3
-            for (int i=0;i<checkBoxes.length;i++){
+            for (int i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].setTypeface(font3);
             }
-            for (int i =0;i<textViews.length;i++){
+            for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font3);
             }
         } else if (CustomizeActivity.package_font == 4) {
             Typeface font4 = ResourcesCompat.getFont(this, R.font.font4);   //4
-            for (int i=0;i<checkBoxes.length;i++){
+            for (int i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].setTypeface(font4);
             }
-            for (int i =0;i<textViews.length;i++){
+            for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font4);
             }
         } else if (CustomizeActivity.package_font == 5) {
             Typeface font5 = ResourcesCompat.getFont(this, R.font.font5);   //5
-            for (int i=0;i<checkBoxes.length;i++){
+            for (int i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].setTypeface(font5);
             }
-            for (int i =0;i<textViews.length;i++){
+            for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font5);
             }
         } else if (CustomizeActivity.package_font == 6) {
             Typeface font6 = ResourcesCompat.getFont(this, R.font.font6);   //6
-            for (int i=0;i<checkBoxes.length;i++){
+            for (int i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].setTypeface(font6);
             }
-            for (int i =0;i<textViews.length;i++){
+            for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font6);
             }
         }
@@ -164,7 +172,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         todo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AgendaActivity.this,ToDoActivity.class);
+                Intent i = new Intent(AgendaActivity.this, ToDoActivity.class);
                 startActivity(i);
             }
         });
@@ -172,7 +180,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         achievementsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AgendaActivity.this,AchievementsActivity.class);
+                Intent i = new Intent(AgendaActivity.this, AchievementsActivity.class);
                 startActivity(i);
             }
         });
@@ -180,12 +188,11 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         customizeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AgendaActivity.this,CustomizeActivity.class);
+                Intent i = new Intent(AgendaActivity.this, CustomizeActivity.class);
                 startActivity(i);
             }
         });
     }
-
 
     @Override
     public void onBackPressed() {
@@ -202,18 +209,18 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_home:
                 break;
             case R.id.nav_customize:
-                Intent i3 = new Intent(AgendaActivity.this,CustomizeActivity.class);
+                Intent i3 = new Intent(AgendaActivity.this, CustomizeActivity.class);
                 startActivity(i3);
                 break;
             case R.id.nav_share:
-                Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_achievements:
-                Intent i1 = new Intent(AgendaActivity.this,AchievementsActivity.class);
+                Intent i1 = new Intent(AgendaActivity.this, AchievementsActivity.class);
                 startActivity(i1);
                 break;
             case R.id.nav_tasks:
-                Intent i2 = new Intent(AgendaActivity.this,ToDoActivity.class);
+                Intent i2 = new Intent(AgendaActivity.this, ToDoActivity.class);
                 startActivity(i2);
                 break;
             case R.id.nav_profile:

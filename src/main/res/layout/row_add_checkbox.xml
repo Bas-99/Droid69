@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_centerHorizontal="true"
+              android:paddingBottom="5dp"
+              android:paddingTop="5dp">
+    <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_height="40dp"
+            android:hint="Your Task"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:id="@+id/checkBoxNewTask"
+            android:background="@drawable/todo_card"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginRight="5dp"/>
+    <FrameLayout
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:background="@drawable/todo_card"
+            android:layout_marginLeft="5dp">
+        <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:id="@+id/spinner_date"
+                android:layout_height="40dp"/>
+    </FrameLayout>
+    <ImageView
+            android:id="@+id/addTaskAdd"
+            app:srcCompat="@drawable/ic_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"/>
+    <ImageView
+            android:id="@+id/deleteTaskDelete"
+            app:srcCompat="@drawable/ic_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+</LinearLayout>
