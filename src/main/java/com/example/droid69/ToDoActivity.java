@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.core.content.res.TypedArrayUtils;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
@@ -30,9 +32,21 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
     ImageButton addTask;
 
     List<String> dateList = new ArrayList<>();
+    ArrayList<Task> tasksList = new ArrayList<>();
 
     CheckBox checkBoxActive;
     EditText editText;
+    TextView timerView;
+
+    View checkBoxView;
+    View activeTasks;
+
+    ImageButton submitTasks;
+
+    AppCompatSpinner spinnerDate;
+
+    int checkBoxId;
+    int counter =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +73,14 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_home);
 
         addTask = (ImageButton) findViewById(R.id.addTasks);
+        submitTasks = (ImageButton) findViewById(R.id.submitTasks);
 
         layoutList = findViewById(R.id.checkBoxContainer);
-        layoutTasks = findViewById(R.id.layoutTasks);
 
         addTask.setOnClickListener(this);
+        submitTasks.setOnClickListener(this);
 
+        dateList.add("Date");
         dateList.add("Today");
         dateList.add("Next day");
         dateList.add("2 days ahead");
@@ -118,24 +134,84 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onClick(View view) {
-        addView();
-        addTask.setEnabled(false);
+        switch (view.getId()){
+            case R.id.addTasks:
+                addView();
+                break;
+            case R.id.submitTasks:
+
+                if (checkIfValidAndRead()){
+
+                    Intent intent = new Intent(ToDoActivity.this,AgendaActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("list",tasksList);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+
+
+                }
+
+                break;
+        }
+
+    }
+
+    private boolean checkIfValidAndRead() {
+        tasksList.clear();
+        boolean result = true;
+
+        for (int i=0;i<layoutList.getChildCount();i++){
+
+            checkBoxView = layoutList.getChildAt(i);
+
+            editText = (EditText) checkBoxView.findViewById(R.id.checkBoxNewTask);
+            spinnerDate = (AppCompatSpinner) checkBoxView.findViewById(R.id.spinner_date);
+
+            Task task = new Task();
+
+            if (!editText.getText().toString().equals("")){
+                task.setTask(editText.getText().toString());
+            }else{
+                result = false;
+                break;
+            }
+
+            if (spinnerDate.getSelectedItemPosition()!=0){
+                task.setDate(dateList.get(spinnerDate.getSelectedItemPosition()));
+            }else {
+                result = false;
+                break;
+            }
+
+            tasksList.add(task);
+        }
+
+        if (tasksList.size()==0){
+            result = false;
+            Toast.makeText(this,"Add Tasks First!",Toast.LENGTH_SHORT).show();
+
+        }else if(!result){
+            Toast.makeText(this,"Enter All Details Correctly!",Toast.LENGTH_SHORT).show();
+
+        }
+
+        return result;
 
     }
 
 
     private void addView() {
-        addTask.setEnabled(false);
-        View checkBoxView = getLayoutInflater().inflate(R.layout.row_add_checkbox, null, false);
-        View activeTasks = getLayoutInflater().inflate(R.layout.row_add_active_task,null,false);
+        checkBoxView = getLayoutInflater().inflate(R.layout.row_add_checkbox, null, false);
+        activeTasks = getLayoutInflater().inflate(R.layout.row_add_active_task, null, false);
 
-        AppCompatSpinner spinnerDate = (AppCompatSpinner) checkBoxView.findViewById(R.id.spinner_date);
+        spinnerDate = (AppCompatSpinner) checkBoxView.findViewById(R.id.spinner_date);
 
         ImageView imageClose = (ImageView) checkBoxView.findViewById(R.id.deleteTaskDelete);
-        ImageView imageAdd = (ImageView)checkBoxView.findViewById(R.id.addTaskAdd);
 
+        timerView = (TextView) activeTasks.findViewById(R.id.timerView);
         editText = (EditText) checkBoxView.findViewById(R.id.checkBoxNewTask);
-        checkBoxActive = (CheckBox)activeTasks.findViewById(R.id.checkBoxActiveTask);
+
+        checkBoxActive = (CheckBox) activeTasks.findViewById(R.id.checkBoxActiveTask);
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, dateList);
         spinnerDate.setAdapter(arrayAdapter);
@@ -147,29 +223,16 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        imageAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addTask(checkBoxView,activeTasks);
-            }
-        });
 
         layoutList.addView(checkBoxView);
 
     }
 
     private void removeVi(View checkBoxView) {
-        addTask.setEnabled(true);
         layoutList.removeView(checkBoxView);
 
     }
 
-    private void addTask(View checkBoxView, View activeTasks) {
-        addTask.setEnabled(true);
-        layoutList.removeView(checkBoxView);
-        checkBoxActive.setText(editText.getText().toString());
-        layoutTasks.addView(activeTasks);
-    }
 
 
 }

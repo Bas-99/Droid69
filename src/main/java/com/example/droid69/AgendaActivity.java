@@ -24,9 +24,13 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -46,11 +50,11 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
     RelativeLayout relativeLayout;
+    RecyclerView linearLayoutTasksList;
 
     ScrollView background;
 
-    final Handler handler_interact = new Handler();//not defined as final variable. may cause        problem
-    View layout_interact;
+    ArrayList<Task> tasksList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,19 +64,20 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        linearLayoutTasksList = (RecyclerView) findViewById(R.id.linearLayoutTasksList);
+
+        linearLayoutTasksList.setLayoutManager(new LinearLayoutManager(this));
+
+        //asksList = (ArrayList<Task>) getIntent().getExtras().getSerializable("list");
+
+        linearLayoutTasksList.setAdapter(new LinearLayoutAdapter(tasksList));
+
 
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-        checkBoxes[0] = (CheckBox) findViewById(R.id.checkBox1);
-        checkBoxes[1] = (CheckBox) findViewById(R.id.checkBox2);
-        checkBoxes[2] = (CheckBox) findViewById(R.id.checkBox3);
-        checkBoxes[3] = (CheckBox) findViewById(R.id.checkBox4);
-        checkBoxes[4] = (CheckBox) findViewById(R.id.checkBox5);
-        checkBoxes[5] = (CheckBox) findViewById(R.id.checkBox6);
 
         textView = (TextView) findViewById(R.id.todoText);
         textViewProgress = (TextView) findViewById(R.id.textViewProgress);
@@ -87,14 +92,12 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         textViews[3] = tasksWeek;
         textViews[4] = tasksToday;
 
-
         todo = (ImageButton) findViewById(R.id.toDoButton);
         achievementsButton = (ImageButton) findViewById(R.id.achievementsButton);
         customizeButton = (ImageButton) findViewById(R.id.customizeButton);
 
         background = (ScrollView) findViewById(R.id.background);
 
-        customizeButton.setBackgroundResource(R.drawable.todo_card);
         Typeface font = ResourcesCompat.getFont(AgendaActivity.this, R.font.font1);   //1
         textViewCustomize.setTypeface(font);
 
@@ -102,59 +105,51 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
             background.setBackgroundResource(R.drawable.theme1_small);
             todo.setBackgroundResource(R.drawable.todo_card);
             achievementsButton.setBackgroundResource(R.drawable.todo_card);
+            customizeButton.setBackgroundResource(R.drawable.todo_card);
+
         } else if (CustomizeActivity.package_background == 2) {
-            background.setBackgroundColor(Color.BLACK);
-
+            background.setBackgroundResource(R.drawable.theme1dark);
+            todo.setBackgroundResource(R.drawable.theme1darktodo);
+            achievementsButton.setBackgroundResource(R.drawable.theme1darktodo);
+            customizeButton.setBackgroundResource(R.drawable.theme1darktodo);
+            textViewCustomize.setTextColor(Color.WHITE);
+            for (int i=0;i<textViews.length;i++){
+                textViews[i].setTextColor(Color.WHITE);
+            }
         } else if (CustomizeActivity.package_background == 3) {
-            background.setBackgroundColor(Color.GRAY);
-
+            background.setBackgroundResource(R.drawable.theme1red);
+            todo.setBackgroundResource(R.drawable.theme1redtodo);
+            achievementsButton.setBackgroundResource(R.drawable.theme1redtodo);
+            customizeButton.setBackgroundResource(R.drawable.theme1redtodo);
         }
 
         if (CustomizeActivity.package_font == 1) {
             Typeface font1 = ResourcesCompat.getFont(this, R.font.font1);   //1
-            for (int i = 0; i < checkBoxes.length; i++) {
-                checkBoxes[i].setTypeface(font1);
-            }
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font1);
             }
         } else if (CustomizeActivity.package_font == 2) {
             Typeface font2 = ResourcesCompat.getFont(this, R.font.font2);   //2
-            for (int i = 0; i < checkBoxes.length; i++) {
-                checkBoxes[i].setTypeface(font2);
-            }
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font2);
             }
         } else if (CustomizeActivity.package_font == 3) {
             Typeface font3 = ResourcesCompat.getFont(this, R.font.font3);   //3
-            for (int i = 0; i < checkBoxes.length; i++) {
-                checkBoxes[i].setTypeface(font3);
-            }
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font3);
             }
         } else if (CustomizeActivity.package_font == 4) {
             Typeface font4 = ResourcesCompat.getFont(this, R.font.font4);   //4
-            for (int i = 0; i < checkBoxes.length; i++) {
-                checkBoxes[i].setTypeface(font4);
-            }
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font4);
             }
         } else if (CustomizeActivity.package_font == 5) {
             Typeface font5 = ResourcesCompat.getFont(this, R.font.font5);   //5
-            for (int i = 0; i < checkBoxes.length; i++) {
-                checkBoxes[i].setTypeface(font5);
-            }
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font5);
             }
         } else if (CustomizeActivity.package_font == 6) {
             Typeface font6 = ResourcesCompat.getFont(this, R.font.font6);   //6
-            for (int i = 0; i < checkBoxes.length; i++) {
-                checkBoxes[i].setTypeface(font6);
-            }
             for (int i = 0; i < textViews.length; i++) {
                 textViews[i].setTypeface(font6);
             }
@@ -232,4 +227,5 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
         return true;
     }
+
 }

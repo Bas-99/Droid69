@@ -37,60 +37,84 @@
                 android:text="Currently Active Tasks:"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="@id/toolbar"
-                app:layout_constraintRight_toRightOf="@id/toolbar"
+                app:layout_constraintLeft_toLeftOf="@id/checkBoxContainer"
+                app:layout_constraintRight_toRightOf="@id/checkBoxContainer"
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        <ScrollView
-                android:id="@+id/scrollViewActiveTasks"
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                app:layout_constraintTop_toBottomOf="@id/activeTasks">
-            <LinearLayout
-                    android:id="@+id/layoutTasks"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-            </LinearLayout>
-
-        </ScrollView>
-        <RelativeLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
                 android:id="@+id/relativeLayoutAddRemove"
-                app:layout_constraintTop_toBottomOf="@id/scrollViewActiveTasks"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-            <ImageButton
-                    android:id="@+id/addTasks"
-                    android:layout_width="160dp"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="30dp"/>
-            <ImageView
-                    android:id="@+id/plusTask"
-                    app:srcCompat="@drawable/ic_plus"
-                    android:layout_alignLeft="@id/addTasks"
-                    android:layout_alignTop="@id/addTasks"
-                    android:layout_marginLeft="10dp"
-                    android:layout_alignBottom="@id/addTasks"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"/>
-            <TextView
-                    android:text="Add"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:layout_alignLeft="@id/addTasks"
-                    android:layout_alignRight="@id/addTasks"
-                    android:layout_alignTop="@id/addTasks"
-                    android:layout_alignBottom="@id/addTasks"
+                app:layout_constraintTop_toBottomOf="@id/activeTasks">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintLeft_toLeftOf="@id/toolbar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-        </RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <ImageButton
+                        android:id="@+id/addTasks"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="30dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toRightOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/submitTasks"/>
+                <ImageView
+                        android:id="@+id/plusTask"
+                        app:srcCompat="@drawable/ic_plus"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintLeft_toLeftOf="@id/addTasks"
+                        app:layout_constraintRight_toLeftOf="@id/textViewadd"
+                        app:layout_constraintTop_toTopOf="@id/addTasks"
+                        app:layout_constraintBottom_toBottomOf="@id/addTasks"/>
+                <TextView
+                        android:text="Add"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:id="@+id/textViewadd"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toRightOf="@id/plusTask"
+                        app:layout_constraintRight_toRightOf="@id/addTasks"
+                        app:layout_constraintTop_toTopOf="@id/addTasks"
+                        app:layout_constraintBottom_toBottomOf="@id/addTasks"/>
 
+                <ImageButton
+                        android:id="@+id/submitTasks"
+                        android:layout_width="220dp"
+                        android:layout_height="50dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/addTasks"/>
+                <ImageView
+                        android:id="@+id/checkTask"
+                        app:srcCompat="@drawable/ic_check"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintLeft_toLeftOf="@id/submitTasks"
+                        app:layout_constraintRight_toLeftOf="@id/textViewSubmit"
+                        app:layout_constraintTop_toTopOf="@id/submitTasks"
+                        app:layout_constraintBottom_toBottomOf="@id/submitTasks"/>
+                <TextView
+                        android:text="Submit ToDo's"
+                        android:textSize="25dp"
+                        android:id="@+id/textViewSubmit"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toRightOf="@id/checkTask"
+                        app:layout_constraintRight_toRightOf="@id/submitTasks"
+                        app:layout_constraintTop_toTopOf="@id/submitTasks"
+                        app:layout_constraintBottom_toBottomOf="@id/submitTasks"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

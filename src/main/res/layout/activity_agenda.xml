@@ -45,6 +45,7 @@
                     android:layout_below="@id/toolbar"
                     android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"/>
+
             <TextView
                     android:id="@+id/todoText"
                     android:text="To Do:"
@@ -57,72 +58,22 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-            <CheckBox
+            <ScrollView
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_alignLeft="@id/toDoButton"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20dp"
-                    android:text="Test"
-                    android:textColor="@color/Black"
-                    android:layout_below="@id/todoText"
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/checkBox1"/>
-            <CheckBox
-                    android:text="Test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:textSize="20dp"
-                    android:layout_alignLeft="@id/toDoButton"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@id/checkBox1"
-                    android:textColor="@color/Black"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/checkBox2"/>
-            <CheckBox
-                    android:text="Test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:textSize="20dp"
-                    android:layout_alignLeft="@id/toDoButton"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/Black"
-                    android:layout_below="@id/checkBox2"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/checkBox3"/>
-            <CheckBox
-                    android:text="Test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:textSize="20dp"
-                    android:layout_alignLeft="@id/toDoButton"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/Black"
-                    android:layout_below="@id/checkBox3"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/checkBox4"/>
-            <CheckBox
-                    android:text="Test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:textSize="20dp"
-                    android:layout_alignLeft="@id/toDoButton"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/Black"
-                    android:layout_below="@id/checkBox4"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/checkBox5"/>
-            <CheckBox
-                    android:text="Test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:textColor="@color/Black"
-                    android:textSize="20dp"
-                    android:layout_alignLeft="@id/toDoButton"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@id/checkBox5"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/checkBox6"/>
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/todoText"
+                    android:layout_marginTop="35dp"
+                    android:layout_alignBottom="@id/toDoButton"
+                    android:layout_marginBottom="5dp">
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/linearLayoutTasksList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </ScrollView>
             <ImageButton
                     android:id="@+id/achievementsButton"
                     android:layout_below="@id/toDoButton"
