@@ -29,8 +29,6 @@ public class TasksActivity extends AppCompatActivity {
 
         recyclerTasks.setAdapter(new TaskAdapter(tasksList));
 
-        Intent intent = new Intent(TasksActivity.this,AgendaActivity.class);
-        startActivity(intent);
     }
 
 }

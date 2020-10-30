@@ -66,12 +66,6 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         toolbar = findViewById(R.id.toolbar);
         linearLayoutTasksList = (RecyclerView) findViewById(R.id.linearLayoutTasksList);
 
-        linearLayoutTasksList.setLayoutManager(new LinearLayoutManager(this));
-
-        //asksList = (ArrayList<Task>) getIntent().getExtras().getSerializable("list");
-
-        linearLayoutTasksList.setAdapter(new LinearLayoutAdapter(tasksList));
-
 
         setSupportActionBar(toolbar);
 

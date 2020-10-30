@@ -8,32 +8,34 @@
               android:paddingTop="5dp">
     <EditText
             android:layout_marginLeft="10dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:hint="Your Task"
             android:layout_weight="1"
+            android:textSize="25dp"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:id="@+id/checkBoxNewTask"
-            android:background="@drawable/todo_card"
+            android:background="@drawable/round_grey"
             android:layout_marginStart="10dp"
             android:layout_width="match_parent"
             android:layout_marginRight="5dp"/>
     <FrameLayout
             android:layout_width="110dp"
-            android:layout_height="40dp"
-            android:background="@drawable/todo_card"
+            android:layout_height="45dp"
+            android:background="@drawable/round_grey"
             android:layout_marginLeft="5dp">
         <androidx.appcompat.widget.AppCompatSpinner
                 android:layout_width="match_parent"
                 android:id="@+id/spinner_date"
-                android:layout_height="40dp"/>
+                android:layout_height="45dp"/>
     </FrameLayout>
+
 
     <ImageView
             android:id="@+id/deleteTaskDelete"
             app:srcCompat="@drawable/ic_delete"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"/>
 </LinearLayout>

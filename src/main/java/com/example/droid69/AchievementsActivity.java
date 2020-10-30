@@ -41,7 +41,7 @@ public class AchievementsActivity extends AppCompatActivity implements Navigatio
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
 
-        navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_achievements);
     }
     @Override
     public void onBackPressed() {

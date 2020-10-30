@@ -155,7 +155,7 @@ public class CustomizeActivity extends AppCompatActivity implements NavigationVi
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
 
-        navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_customize);
 
     }
 
