@@ -1,19 +1,20 @@
 package com.example.droid69;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.content.Intent;
+import android.view.*;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskView> {
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskView>  {
 
     ArrayList<Task> tasksList = new ArrayList<>();
+
+    int mPosition;
 
     public TaskAdapter(ArrayList<Task> tasksList) {
         this.tasksList = tasksList;
@@ -23,8 +24,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskView> {
     @Override
     public TaskView onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_task,parent,false);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_screen_row,parent,false);
 
         return new TaskView(view);
     }
@@ -33,8 +33,29 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskView> {
     public void onBindViewHolder(@NonNull @NotNull TaskView holder, int position) {
 
         Task task = tasksList.get(position);
+        if (task.getDate().equals("Today")){
+            holder.textDate.setText("0");
+        } else if(task.getDate().equals("Next day")){
+            holder.textDate.setText("1");
+        }else if(task.getDate().equals("2 days")){
+            holder.textDate.setText("2");
+        }else if(task.getDate().equals("3 days")){
+            holder.textDate.setText("3");
+        }else if(task.getDate().equals("4 days")){
+            holder.textDate.setText("4");
+        }else if(task.getDate().equals("5 days")){
+            holder.textDate.setText("5");
+        }else if(task.getDate().equals("6 days")){
+            holder.textDate.setText("6");
+        }else if(task.getDate().equals("1 week")){
+            holder.textDate.setText("7");
+        }
         holder.textTask.setText(task.getTask());
-        holder.textDate.setText(task.getDate());
+
+
+    }
+    public void setPosition(int position){
+        mPosition = position;
     }
 
     @Override
@@ -42,19 +63,26 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskView> {
         return tasksList.size();
     }
 
-    public class TaskView extends  RecyclerView.ViewHolder{
+
+
+    public static class TaskView extends  RecyclerView.ViewHolder{
 
 
         TextView textTask, textDate;
+        CardView cardView;
         public TaskView(@NonNull View itemView) {
 
             super(itemView);
 
-            textTask = (TextView) itemView.findViewById(R.id.checkBoxActiveTask);
-            textDate = (TextView) itemView.findViewById(R.id.timerView);
+            textTask = (TextView) itemView.findViewById(R.id.textViewActiveTask);
+            textDate = (TextView) itemView.findViewById(R.id.timerViewHomeScreen);
+            cardView = (CardView) itemView.findViewById(R.id.cardViewHomeScreen);
 
         }
 
     }
 
+
+
 }
+

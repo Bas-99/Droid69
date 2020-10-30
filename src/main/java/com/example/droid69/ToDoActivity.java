@@ -22,6 +22,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ToDoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -59,12 +60,15 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
 
         loadData();
 
+        Task task = new Task();
+
         recyclerView = findViewById(R.id.recycler_todo);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         //recyclerView.setAdapter(new TaskAdapter(tasksList));
 
         recyclerView.setHasFixedSize(true);
+
 
         adapter = new LinearLayoutAdapter(tasksList);
         recyclerView.setAdapter(adapter);
@@ -106,7 +110,8 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
         dateList.add("4 days");
         dateList.add("5 days");
         dateList.add("6 days");
-        dateList.add("1 week");
+        dateList.add("7 days");
+
 
     }
 
@@ -116,6 +121,7 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case 101:
                 //TODO: edit task code HERE
+                saveData();
                 return true;
             case 102:
                 Snackbar.make(findViewById(R.id.rootId),"Deleted Task",Snackbar.LENGTH_LONG).show();
@@ -197,7 +203,7 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private  void saveData(){
+    private void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
@@ -206,7 +212,7 @@ public class ToDoActivity extends AppCompatActivity implements NavigationView.On
         editor.apply();
     }
 
-    private  void loadData(){
+    private void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences",MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("task list",null);

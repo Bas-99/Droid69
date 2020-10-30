@@ -1,17 +1,13 @@
 package com.example.droid69;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.content.res.ColorStateList;
+import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Build;
 
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
@@ -19,21 +15,18 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.navigation.NavigationView;
-import org.jetbrains.annotations.NotNull;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
+import java.util.Collections;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -41,6 +34,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
 
     CheckBox[] checkBoxes = new CheckBox[6];
     TextView[] textViews = new TextView[5];
+    TextView[] todos = new TextView[6];
 
     TextView textView, textViewProgress, tasksTotal, tasksWeek, tasksToday, textViewCustomize;
 
@@ -52,7 +46,7 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
     RelativeLayout relativeLayout;
     RecyclerView linearLayoutTasksList;
 
-    ScrollView background;
+    ScrollView background,scrollViewRecycler;
 
     ArrayList<Task> tasksList = new ArrayList<>();
 
@@ -61,10 +55,22 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
 
+        loadData();
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        linearLayoutTasksList = (RecyclerView) findViewById(R.id.linearLayoutTasksList);
+
+        linearLayoutTasksList = (RecyclerView)findViewById(R.id.linearLayoutTasksList);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        linearLayoutTasksList.setLayoutManager(layoutManager);
+
+        //tasksList = (ArrayList<Task>) getIntent().getExtras().getSerializable("list");
+
+        linearLayoutTasksList.setAdapter(new TaskAdapter(tasksList));
+
+
 
 
         setSupportActionBar(toolbar);
@@ -86,9 +92,14 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         textViews[3] = tasksWeek;
         textViews[4] = tasksToday;
 
+
         todo = (ImageButton) findViewById(R.id.toDoButton);
         achievementsButton = (ImageButton) findViewById(R.id.achievementsButton);
         customizeButton = (ImageButton) findViewById(R.id.customizeButton);
+
+        todo.setBackgroundResource(R.drawable.round_grey);
+        achievementsButton.setBackgroundResource(R.drawable.round_grey);
+        customizeButton.setBackgroundResource(R.drawable.round_grey);
 
         background = (ScrollView) findViewById(R.id.background);
 
@@ -148,6 +159,8 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
                 textViews[i].setTypeface(font6);
             }
         }
+
+
 
         Menu menu = navigationView.getMenu();
         menu.findItem(R.id.nav_logout).setVisible(false);
@@ -220,6 +233,27 @@ public class AgendaActivity extends AppCompatActivity implements NavigationView.
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    private void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(tasksList);
+        editor.putString("task list",json);
+        editor.apply();
+    }
+
+    private void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences",MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("task list",null);
+        Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+        tasksList = gson.fromJson(json, type);
+
+        if (tasksList == null){
+            tasksList = new ArrayList<>();
+        }
     }
 
 }

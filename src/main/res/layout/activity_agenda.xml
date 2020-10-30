@@ -39,7 +39,7 @@
             <ImageButton
                     android:id="@+id/toDoButton"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="370dp"
                     android:gravity="start"
                     android:textStyle="bold"
                     android:layout_below="@id/toolbar"
@@ -58,19 +58,29 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-            <ScrollView
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/todoText"
-                    android:layout_marginTop="35dp"
+                    android:text="Days To Go"
+                    android:layout_alignLeft="@id/toDoButton"
+                    android:id="@+id/daysToGo"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@id/todoText"/>
+            <ScrollView
+                    android:id="@+id/scrollViewRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/daysToGo"
+                    android:layout_marginTop="20dp"
                     android:layout_alignBottom="@id/toDoButton"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="10dp">
                 <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/linearLayoutTasksList"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingVertical="5dp"
                         android:orientation="vertical"
-                        android:paddingLeft="10dp">
+                        android:paddingHorizontal="10dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </ScrollView>
